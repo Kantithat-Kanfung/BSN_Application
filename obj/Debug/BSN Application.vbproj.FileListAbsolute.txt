@@ -1,0 +1,12 @@
+C:\Users\Snakeman\Desktop\BSN\bin\Debug\BSN.exe.config
+C:\Users\Snakeman\Desktop\BSN\bin\Debug\BSN.exe
+C:\Users\Snakeman\Desktop\BSN\bin\Debug\BSN.pdb
+C:\Users\Snakeman\Desktop\BSN\bin\Debug\BSN.xml
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN Application.vbprojResolveAssemblyReference.cache
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.FormMain.resources
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.Resources.resources
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN Application.vbproj.GenerateResource.Cache
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.exe
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.xml
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.pdb
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.frmCustomer.resources
