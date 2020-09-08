@@ -10,3 +10,4 @@ C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.exe
 C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.xml
 C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.pdb
 C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.frmCustomer.resources
+C:\Users\Snakeman\Desktop\BSN\obj\Debug\BSN.frmSupplier.resources

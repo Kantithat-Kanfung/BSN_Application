@@ -26,6 +26,12 @@ Partial Class FormMain
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SupplierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PersonalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -44,14 +50,8 @@ Partial Class FormMain
         Me.tspBtnOrder = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripLabelOrder = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripLabelPersonal = New System.Windows.Forms.ToolStripLabel()
         Me.tspBtnPersonal = New System.Windows.Forms.ToolStripButton()
-        Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SupplierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PersonalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripLabelPersonal = New System.Windows.Forms.ToolStripLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -77,6 +77,48 @@ Partial Class FormMain
         Me.ManagementToolStripMenuItem.Name = "ManagementToolStripMenuItem"
         Me.ManagementToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
         Me.ManagementToolStripMenuItem.Text = "Management"
+        '
+        'CustomerToolStripMenuItem
+        '
+        Me.CustomerToolStripMenuItem.Image = CType(resources.GetObject("CustomerToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
+        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.CustomerToolStripMenuItem.Text = "Customer"
+        '
+        'SupplierToolStripMenuItem
+        '
+        Me.SupplierToolStripMenuItem.Image = CType(resources.GetObject("SupplierToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.SupplierToolStripMenuItem.Name = "SupplierToolStripMenuItem"
+        Me.SupplierToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.SupplierToolStripMenuItem.Text = "Supplier"
+        '
+        'CategoryToolStripMenuItem
+        '
+        Me.CategoryToolStripMenuItem.Image = CType(resources.GetObject("CategoryToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.CategoryToolStripMenuItem.Name = "CategoryToolStripMenuItem"
+        Me.CategoryToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.CategoryToolStripMenuItem.Text = "Category"
+        '
+        'ProductToolStripMenuItem
+        '
+        Me.ProductToolStripMenuItem.Image = CType(resources.GetObject("ProductToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ProductToolStripMenuItem.Name = "ProductToolStripMenuItem"
+        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.ProductToolStripMenuItem.Text = "Product"
+        '
+        'OrderToolStripMenuItem
+        '
+        Me.OrderToolStripMenuItem.Image = CType(resources.GetObject("OrderToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.OrderToolStripMenuItem.Name = "OrderToolStripMenuItem"
+        Me.OrderToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.OrderToolStripMenuItem.Text = "Order"
+        '
+        'PersonalToolStripMenuItem
+        '
+        Me.PersonalToolStripMenuItem.Image = CType(resources.GetObject("PersonalToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.PersonalToolStripMenuItem.Name = "PersonalToolStripMenuItem"
+        Me.PersonalToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.PersonalToolStripMenuItem.Text = "Personal"
         '
         'HelpToolStripMenuItem
         '
@@ -205,12 +247,6 @@ Partial Class FormMain
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
         Me.ToolStripSeparator5.Size = New System.Drawing.Size(109, 6)
         '
-        'ToolStripLabelPersonal
-        '
-        Me.ToolStripLabelPersonal.Name = "ToolStripLabelPersonal"
-        Me.ToolStripLabelPersonal.Size = New System.Drawing.Size(52, 15)
-        Me.ToolStripLabelPersonal.Text = "Personal"
-        '
         'tspBtnPersonal
         '
         Me.tspBtnPersonal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -220,47 +256,11 @@ Partial Class FormMain
         Me.tspBtnPersonal.Name = "tspBtnPersonal"
         Me.tspBtnPersonal.Size = New System.Drawing.Size(109, 68)
         '
-        'CustomerToolStripMenuItem
+        'ToolStripLabelPersonal
         '
-        Me.CustomerToolStripMenuItem.Image = CType(resources.GetObject("CustomerToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
-        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CustomerToolStripMenuItem.Text = "Customer"
-        '
-        'SupplierToolStripMenuItem
-        '
-        Me.SupplierToolStripMenuItem.Image = CType(resources.GetObject("SupplierToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.SupplierToolStripMenuItem.Name = "SupplierToolStripMenuItem"
-        Me.SupplierToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.SupplierToolStripMenuItem.Text = "Supplier"
-        '
-        'CategoryToolStripMenuItem
-        '
-        Me.CategoryToolStripMenuItem.Image = CType(resources.GetObject("CategoryToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.CategoryToolStripMenuItem.Name = "CategoryToolStripMenuItem"
-        Me.CategoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CategoryToolStripMenuItem.Text = "Category"
-        '
-        'ProductToolStripMenuItem
-        '
-        Me.ProductToolStripMenuItem.Image = CType(resources.GetObject("ProductToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.ProductToolStripMenuItem.Name = "ProductToolStripMenuItem"
-        Me.ProductToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ProductToolStripMenuItem.Text = "Product"
-        '
-        'OrderToolStripMenuItem
-        '
-        Me.OrderToolStripMenuItem.Image = CType(resources.GetObject("OrderToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.OrderToolStripMenuItem.Name = "OrderToolStripMenuItem"
-        Me.OrderToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.OrderToolStripMenuItem.Text = "Order"
-        '
-        'PersonalToolStripMenuItem
-        '
-        Me.PersonalToolStripMenuItem.Image = CType(resources.GetObject("PersonalToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.PersonalToolStripMenuItem.Name = "PersonalToolStripMenuItem"
-        Me.PersonalToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PersonalToolStripMenuItem.Text = "Personal"
+        Me.ToolStripLabelPersonal.Name = "ToolStripLabelPersonal"
+        Me.ToolStripLabelPersonal.Size = New System.Drawing.Size(52, 15)
+        Me.ToolStripLabelPersonal.Text = "Personal"
         '
         'FormMain
         '

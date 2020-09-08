@@ -1,43 +1,50 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 
-Public Class frmCustomer
-    Private Sub frmCustomer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+Public Class frmSupplier
+    Private Sub frmSupplier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If connection.State = ConnectionState.Closed Then
             connection.Open()
         End If
 
         BindingNavigator1.DeleteItem = Nothing
-        BindingData()
+        'BindingData()
     End Sub
 
-    Private Sub BindingData(Optional cmd As SqlCommand = Nothing)
+    Private Sub BindingData(ByVal Optional cmd As SqlCommand = Nothing)
         Dim tbx As TextBox
+        Dim link As LinkLabel
 
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox Then
                 tbx = CType(ctrl, TextBox)
                 tbx.DataBindings.Clear()
                 tbx.Text = ""
+            ElseIf TypeOf ctrl Is LinkLabel Then
+                link = CType(ctrl, LinkLabel)
+                link.DataBindings.Clear()
             End If
         Next
 
         If cmd Is Nothing Then
-            command.CommandText = "SELECT * FROM Customer;"
+            command.CommandText = "SELECT * FROM Supplier;"
         Else
             command = cmd
         End If
 
         adapter = New SqlDataAdapter(command)
         dataSt = New DataSet
-        adapter.Fill(dataSt, "customer")
+        adapter.Fill(dataSt, "Supplier")
 
-        bindingSrc = New BindingSource(dataSt, "customer")
-        tbxID.DataBindings.Add("text", bindingSrc, "CustomerId")
-        tbxName.DataBindings.Add("text", bindingSrc, "Name")
-        tbxPhone.DataBindings.Add("text", bindingSrc, "Phone")
-        tbxMail.DataBindings.Add("text", bindingSrc, "Email")
-        tbxAddress.DataBindings.Add("text", bindingSrc, "Address")
+        bindingSrc = New BindingSource(dataSt, "Supplier")
+        tbxID.DataBindings.Add("Text", bindingSrc, "SupplierId")
+        tbxName.DataBindings.Add("Text", bindingSrc, "Name")
+        tbxPhone.DataBindings.Add("Text", bindingSrc, "Phone")
+        tbxFax.DataBindings.Add("Text", bindingSrc, "Fax")
+        tbxMail.DataBindings.Add("Text", bindingSrc, "Mail")
+        tbxAddress.DataBindings.Add("Text", bindingSrc, "Address")
+        LinkURL.DataBindings.Add("Text", bindingSrc, "Website")
+        LabelURL.Text = ""
         BindingNavigator1.BindingSource = bindingSrc
         createAutoComplete()
     End Sub
@@ -51,14 +58,16 @@ Public Class frmCustomer
     End Sub
 
     Private Sub insertData()
-        sql = "INSERT INTO Customer(Name, Phone, Email, Address) VALUES(@n, @p, @e, @a)"
+        sql = "INSERT INTO Supplier(Name, Phone, Fax, Email, Address, Website) VALUES(@n, @p, @f, @e, @a, @w);"
 
         command.CommandText = sql
         command.Parameters.Clear()
         command.Parameters.AddWithValue("@n", tbxName.Text.ToString())
         command.Parameters.AddWithValue("@p", tbxPhone.Text.ToString())
+        command.Parameters.AddWithValue("@f", tbxFax.Text.ToString())
         command.Parameters.AddWithValue("@e", tbxMail.Text.ToString())
         command.Parameters.AddWithValue("@a", tbxAddress.Text.ToString())
+        command.Parameters.AddWithValue("@w", LabelURL.Text.ToString())
 
         Dim result As Integer = command.ExecuteNonQuery()
 
@@ -71,15 +80,16 @@ Public Class frmCustomer
     End Sub
 
     Private Sub updateData()
-        sql = "UPDATE Customer SET Name = @n, Phone = @p, Email = @e, Address = @a WHERE CustomerId = @i;"
+        sql = "UPDATE Supplier SET Name = @n, Phone = @p, Fax = @f, Email = @e, Address = @a, Website = @w WHERE CustomerId = @i;"
 
         command.CommandText = sql
         command.Parameters.Clear()
         command.Parameters.AddWithValue("@n", tbxName.Text.ToString())
         command.Parameters.AddWithValue("@p", tbxPhone.Text.ToString())
+        command.Parameters.AddWithValue("@f", tbxFax.Text.ToString())
         command.Parameters.AddWithValue("@e", tbxMail.Text.ToString())
         command.Parameters.AddWithValue("@a", tbxAddress.Text.ToString())
-        command.Parameters.AddWithValue("@i", tbxID.Text.ToString())
+        command.Parameters.AddWithValue("@w", LabelURL.Text.ToString())
 
         Dim result As Integer = command.ExecuteNonQuery()
 
@@ -98,7 +108,7 @@ Public Class frmCustomer
             Exit Sub
         End If
 
-        sql = "DELETE FROM Customer WHERE CustomerId = @i"
+        sql = "DELETE FROM Supplier WHERE SupplierId = @i"
 
         command.CommandText = sql
         command.Parameters.Clear()
@@ -110,6 +120,46 @@ Public Class frmCustomer
             MsgBox("ลบข้อมูลแล้ว")
             BindingData()
         End If
+    End Sub
+
+    Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
+        If String.IsNullOrEmpty(tbxSearch.Text) Then
+            BindingData()
+        End If
+
+        sql = "SELECT * FROM Supplier WHERE Name LIKE '%' + @n + '%';"
+
+        command.CommandText = sql
+        command.Parameters.Clear()
+        command.Parameters.AddWithValue("@n", tbxSearch.Text.ToString())
+
+        BindingData()
+    End Sub
+
+    Private Sub LinkURL_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkURL.LinkClicked
+        Dim website As String = InputBox("กรุณาใส่ URL ของเว็บไซต์")
+
+        If website <> "http://" OrElse website <> "https://" OrElse website <> "" Then
+            LabelURL.Text = website
+        End If
+    End Sub
+
+    Private Sub tbxSearch_TextChanged(sender As Object, e As EventArgs) Handles tbxSearch.TextChanged
+        sql = "SELECT ProductName, Price, Stock, Expire, Detail FROM Product WHERE SupplierId = @i"
+
+        command.CommandText = sql
+        command.Parameters.Clear()
+        command.Parameters.AddWithValue("@i", tbxID.Text.ToString())
+
+        adapter.SelectCommand = command
+
+        dataSt = New DataSet
+
+        Dim header() As String = {"ชื่อสินค้า", "ราคา", "คงเหลือ", "หมดอายุ", "รายละเอียด"}
+
+        For index = 1 To header.Length - 1
+            dvgListProduct.Columns(index).HeaderText = header(index)
+        Next
     End Sub
 
     Private Sub createAutoComplete()
@@ -130,40 +180,5 @@ Public Class frmCustomer
         tbxSearch.AutoCompleteMode = AutoCompleteMode.Suggest
         tbxSearch.AutoCompleteSource = AutoCompleteSource.CustomSource
         tbxSearch.AutoCompleteCustomSource = autoComp
-    End Sub
-
-    Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
-        If String.IsNullOrEmpty(tbxSearch.Text) Then
-            BindingData()
-        End If
-
-        sql = "SELECT * FROM Customer WHERE Name LIKE '%' + @n + '%';"
-
-        command.CommandText = sql
-        command.Parameters.Clear()
-        command.Parameters.AddWithValue("@n", tbxSearch.Text.ToString())
-
-        BindingData()
-    End Sub
-
-    Private Sub tbxSearch_TextChanged(sender As Object, e As EventArgs) Handles tbxSearch.TextChanged
-        sql = "SELECT Order, Payment, Delivery, Note FROM Orders WHERE CustomerId = @i"
-
-        command.CommandText = sql
-        command.Parameters.Clear()
-        command.Parameters.AddWithValue("@i", tbxID.Text.ToString())
-
-        adapter.SelectCommand = command
-
-        dataSt = New DataSet
-
-        'adapter.Fill(dataSt, "CustomerDataGridView")
-        'dvgHistoryOrder.DataSource = dataSt.Tables("CustomerDataGridView")
-
-        Dim header() As String = {"วันที่", "การชำระเงิน", "การจัดส่ง", "หมายเหตุ"}
-
-        For index = 1 To header.Length - 1
-            dvgHistoryOrder.Columns(index).HeaderText = header(index)
-        Next
     End Sub
 End Class

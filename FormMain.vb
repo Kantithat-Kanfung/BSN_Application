@@ -19,4 +19,28 @@
         f.Top = 10
         f.Show()
     End Sub
+
+    Private Sub tspBtnCustomer_Click(sender As Object, e As EventArgs) Handles tspBtnCustomer.Click
+        ShowForm(frmCustomer)
+    End Sub
+
+    Private Sub tspBtnSupplier_Click(sender As Object, e As EventArgs) Handles tspBtnSupplier.Click
+        ShowForm(frmSupplier)
+    End Sub
+
+    Private Sub tspBtnCategory_Click(sender As Object, e As EventArgs) Handles tspBtnCategory.Click
+
+    End Sub
+
+    Private Sub tspBtnProduct_Click(sender As Object, e As EventArgs) Handles tspBtnProduct.Click
+
+    End Sub
+
+    Private Sub tspBtnOrder_Click(sender As Object, e As EventArgs) Handles tspBtnOrder.Click
+
+    End Sub
+
+    Private Sub tspBtnPersonal_Click(sender As Object, e As EventArgs) Handles tspBtnPersonal.Click
+
+    End Sub
 End Class
