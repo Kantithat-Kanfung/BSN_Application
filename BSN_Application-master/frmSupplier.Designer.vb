@@ -377,9 +377,9 @@ Partial Class frmSupplier
         Me.LabelSupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelSupplier.Location = New System.Drawing.Point(3, 10)
         Me.LabelSupplier.Name = "LabelSupplier"
-        Me.LabelSupplier.Size = New System.Drawing.Size(235, 25)
+        Me.LabelSupplier.Size = New System.Drawing.Size(222, 25)
         Me.LabelSupplier.TabIndex = 0
-        Me.LabelSupplier.Text = "Customer Management"
+        Me.LabelSupplier.Text = "Supplier Management"
         '
         'Panel1
         '

@@ -125,7 +125,7 @@ Public Class frmCategory
     End Sub
 
     Private Sub tbxSearch_TextChanged(sender As Object, e As EventArgs) Handles tbxSearch.TextChanged
-        sql = "SELECT ProductName, Price, Stock, Expire, Detail FROM Product WHERE CategotyId = @i"
+        sql = "SELECT Name, Price, Stock, Expire, Detail FROM Product WHERE CategotyId = @i"
 
         command.CommandText = sql
         command.Parameters.Clear()

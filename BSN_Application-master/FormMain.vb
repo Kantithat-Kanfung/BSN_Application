@@ -33,7 +33,7 @@
     End Sub
 
     Private Sub tspBtnProduct_Click(sender As Object, e As EventArgs) Handles tspBtnProduct.Click
-
+        ShowForm(frmProduct)
     End Sub
 
     Private Sub tspBtnOrder_Click(sender As Object, e As EventArgs) Handles tspBtnOrder.Click
